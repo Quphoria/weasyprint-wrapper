@@ -15,11 +15,14 @@ const quote = val => (typeof val === 'string' && process.platform !== 'win32')
 const weasyprint = async (input, { command = 'weasyprint', ...opts } = {}) => {
     let child;
     const isUrl = /^(https?|file):\/\//.test(input);
-    const keys = Object.keys(opts);
     const args = [command];
 
-    keys.forEach((key, index, arry) => {
-        arry[index] = key.length === 1 ? '-' + key : '--' + dasher(key);
+    Object.entries(opts).forEach(([key, value]) => {
+        args.push(key.length === 1 ? '-' + key : '--' + dasher(key));
+        // only add value if it is not a boolean
+        if (value !== false && value !== true) {
+            args.push(value);
+        }
     });
 
     args.push(isUrl ? quote(input) : '-'); // stdin if HTML given directly
