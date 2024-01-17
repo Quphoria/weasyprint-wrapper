@@ -12,6 +12,9 @@
     "weasyprint-pdf",
     "pdf-generator"
   ],
+  "publishConfig": {
+		"registry": "https://registry.npmjs.org/"
+	},
   "repository": {
     "type": "git",
     "url": "https://github.com/quphoria/weasyprint-wrapper"
