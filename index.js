@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const debug = require('debug');
-const log = debug('weasyprint:log');
-const err = debug('weasyprint:error');
+const log = debug('weasyprint-wrapper:log');
+const err = debug('weasyprint-wrapper:error');
 
 const dasher = input => input
     .replace(/\W+/g, '-')

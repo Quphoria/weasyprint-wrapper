@@ -2,7 +2,9 @@
 
 *A NodeJS wrapper module for Weasyprint Python package (HTML to PDF converter).*
 
-This module is a fork of [dills122/weasyprint-wrapper](https://github.com/dills122/weasyprint-wrapper) with fixes, minor updates and reuploaded back to npm as [weasyprint](https://www.npmjs.com/package/weasyprint).
+This module is a fork of [Trim/weasyprint-wrapper](https://github.com/Trim/weasyprint-wrapper) uploaded to npm as [weasyprint](https://www.npmjs.com/package/@quphoria/weasyprint-wrapper) due to both [weasyprint-wrapper](https://www.npmjs.com/package/weasyprint-wrapper) and [weasyprint](https://www.npmjs.com/package/weasyprint) still not supporting passed in options, so I have uploaded the patch in [Trim's pull request to weasyprint](https://github.com/bob6664569/weasyprint-wrapper/pull/1).  
+
+Yeah, I know, It's confusing.
 
 ## Getting started
 Install the package (Python3 required):
@@ -12,14 +14,14 @@ pip3 install weasyprint
 
 Add this NodeJS wrapper to your project:
 ```
-npm i weasyprint
+npm i @quphoria/weasyprint-wrapper
 ```
 
 ## Usage
 Example:
 
 ```javascript
-const weasyprint = require('weasyprint');
+const weasyprint = require('@quphoria/weasyprint-wrapper');
 
 // URL, specifying the format & default command to spawn weasyprint
 const resBuffer = await weasyprint('http://google.com/', { 

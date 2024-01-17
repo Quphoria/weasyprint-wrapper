@@ -1,6 +1,6 @@
 {
-  "name": "weasyprint",
-  "version": "0.1.6",
+  "name": "@quphoria/weasyprint-wrapper",
+  "version": "0.1.7",
   "description": "Weasyprint Wrapper for NodeJS (Python PDF Generator from HTML)",
   "main": "index.js",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bob6664569/weasyprint-wrapper"
+    "url": "https://github.com/quphoria/weasyprint-wrapper"
   },
   "author": "Dylan Steele",
   "license": "MIT",

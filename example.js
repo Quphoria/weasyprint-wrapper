@@ -1,6 +1,6 @@
 (async () => {
     const fs = require('fs');
-    const weasyprint = require('weasyprint');
+    const weasyprint = require('@quphoria/weasyprint-wrapper');
 
     // URL
     try {
