@@ -52,9 +52,23 @@ const weasyprint = async (input, { command = 'weasyprint', ...opts } = {}) => {
             err(chunk.toString('utf8').trim());
         });
         child.on('exit', function () {
-            if (opts.output && errBuffers.length === 0) {
+            // Debug info is returned on stderr, if we ONLY get DEBUG and INFO messages, and we are outputting to a file, just pretend they came over stdout
+            var hasErrors = false;
+            if (opts.output) {
+                for (const errBuf of errBuffers) {
+                    const errStr = errBuf.toString('utf8');
+                    // Ignore it if is a DEBUG or INFO message
+                    if (errStr.startsWith("INFO") || errStr.startsWith("DEBUG")) continue;
+                    // It has errors, stop here
+                    hasErrors = true;
+                    break;
+                }
+            }
+            
+            if (opts.output && numErrors) {
                 log('Success, returning stdout buffer...');
-                resolve(Buffer.concat(buffers));
+                if (buffers.length) reject("Unexpected stdout!");
+                else resolve(Buffer.concat(errBuffers));
             } else if (!opts.output && buffers.length !== 0) {
                 log('Success, returning PDF buffer...');
                 resolve(Buffer.concat(buffers));
