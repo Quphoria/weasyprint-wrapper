@@ -65,7 +65,7 @@ const weasyprint = async (input, { command = 'weasyprint', ...opts } = {}) => {
                 }
             }
             
-            if (opts.output && numErrors) {
+            if (opts.output && !hasErrors) {
                 log('Success, returning stdout buffer...');
                 if (buffers.length) reject("Unexpected stdout!");
                 else resolve(Buffer.concat(errBuffers));
