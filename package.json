@@ -1,6 +1,6 @@
 {
   "name": "@quphoria/weasyprint-wrapper",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Weasyprint Wrapper for NodeJS (Python PDF Generator from HTML)",
   "main": "index.js",
   "keywords": [

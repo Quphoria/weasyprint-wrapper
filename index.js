@@ -52,7 +52,10 @@ const weasyprint = async (input, { command = 'weasyprint', ...opts } = {}) => {
             err(chunk.toString('utf8').trim());
         });
         child.on('exit', function () {
-            if (buffers.length !== 0) {
+            if (opts.output && errBuffers.length === 0) {
+                log('Success, returning stdout buffer...');
+                resolve(Buffer.concat(buffers));
+            } else if (!opts.output && buffers.length !== 0) {
                 log('Success, returning PDF buffer...');
                 resolve(Buffer.concat(buffers));
             } else {
